@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reporte de Ventas</title>
+</head>
+<body>
+    <h1>Reporte de Ventas</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Producto</th>
+                <th>Total Vendido</th>
+                <th>Total Ingresos</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for venta in ventas %}
+            <tr>
+                <td>{{ venta.producto__nombre }}</td>
+                <td>{{ venta.total_vendido }}</td>
+                <td>{{ venta.total_ingresos }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
