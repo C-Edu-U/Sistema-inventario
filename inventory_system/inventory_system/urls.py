@@ -19,10 +19,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('reportes/', include('reportes.urls')),  # Incluye las rutas de la app reportes
-    path('reportes_usuarios/', include('reportes_usuarios.urls')),  # Incluye las rutas de la app reportes_usuarios
-    path('reportes_clientes/', include('reportes_clientes.urls')),  # Incluye las rutas de la app reportes_clientes
-    path('reportes_productos/', include('reportes_productos.urls')),  # Incluye las rutas de la app reportes_productos
+    path('reportes_generales/', include('reportes_generales.urls')),  # Incluye las rutas de la app reportes_generales
     # Otras rutas de tus aplicaciones
 ]
 

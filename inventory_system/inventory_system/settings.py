@@ -38,10 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'inventory', #nuestra app de entrada de datos
-    'reportes', #nuestra app de reportes
-    'reportes_usuarios', #nuestra app de reportes de usuarios
-    'reportes_clientes', #nuestra app de reportes de clientes
-    'reportes_productos', #nuestra app de reportes de productos
+    'reportes_generales', #nuestra app de reportes en general
 ]
 
 MIDDLEWARE = [
