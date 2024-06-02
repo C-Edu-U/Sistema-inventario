@@ -11,9 +11,10 @@
                 <th>ID</th>
                 <th>Nombre</th>
                 <th>Descripción</th>
-                <th>Precio de venta</th>
-                <th>Precio de compra</th>
+                <th>Precio Compra</th>
+                <th>Precio Venta</th>
                 <th>Fecha de Caducidad</th>
+                <th>Existencia</th>
             </tr>
         </thead>
         <tbody>
@@ -22,9 +23,10 @@
                 <td>{{ producto.id }}</td>
                 <td>{{ producto.nombre }}</td>
                 <td>{{ producto.descripcion }}</td>
-                <td>{{ producto.precio_venta }}</td>
                 <td>{{ producto.precio_compra }}</td>
+                <td>{{ producto.precio_venta }}</td>
                 <td>{{ producto.fecha_caducidad }}</td>
+                <td>{{ producto.existencia }}</td>
             </tr>
             {% endfor %}
         </tbody>

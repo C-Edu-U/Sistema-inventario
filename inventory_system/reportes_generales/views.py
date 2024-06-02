@@ -29,3 +29,4 @@ def reporte_productos(request):
         'productos': productos
     }
     return render(request, 'reportes_generales/reporte_productos.html', context)
+
