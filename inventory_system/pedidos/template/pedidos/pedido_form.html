@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Realizar Pedido</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #F7F8FA;
+            color: #010101;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #FFFFFF;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .button {
+            background-color: #0561FC;
+            color: #FFFFFF;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .button:hover {
+            background-color: #004bbd;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #93A3AB;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Realizar Pedido</h1>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ venta_form.cliente.label_tag }}
+                {{ venta_form.cliente }}
+            </div>
+            <h2>Detalles del Pedido</h2>
+            {{ detalle_formset.management_form }}
+            {% for form in detalle_formset %}
+                <div class="form-group">
+                    {{ form.producto.label_tag }}
+                    {{ form.producto }}
+                </div>
+                <div class="form-group">
+                    {{ form.cantidad.label_tag }}
+                    {{ form.cantidad }}
+                </div>
+            {% endfor %}
+            <button type="submit" class="button">Realizar Pedido</button>
+        </form>
+    </div>
+</body>
+</html>
+
