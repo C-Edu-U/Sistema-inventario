@@ -22,10 +22,20 @@ class Proveedor(models.Model):
     def __str__(self):
         return self.nombre
 
+class Categoria(models.Model):
+    nombre = models.CharField(max_length=100)
+    descripcion = models.TextField(blank=True, null=True)
+
+    def __str__(self):
+        return self.nombre
+
+
 class Producto(models.Model):
-    nombre = models.CharField(max_length=255)
-    descripcion = models.TextField(default="Sin descripción")
-    existencia = models.IntegerField(default=0)  # Nuevo campo
+    categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
+    nombre = models.CharField(max_length=100)
+    descripcion = models.TextField(blank=True, null=True)
+    precio_unitario = models.DecimalField(max_digits=10, decimal_places=2)
+    existencia = models.IntegerField(default=0)
 
     def __str__(self):
         return self.nombre
@@ -53,4 +63,5 @@ class Venta(models.Model):
         super().save(*args, **kwargs)
         self.producto.existencia -= self.cantidad
         self.producto.save()
+
 

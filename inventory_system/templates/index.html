@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Inicio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #F7F8FA;
+            color: #010101;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .container {
+            text-align: center;
+        }
+        .button {
+            background-color: #0561FC;
+            color: #FFFFFF;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 18px;
+            margin: 10px;
+        }
+        .button:hover {
+            background-color: #004bbd;
+        }
+        .login {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+        .login a {
+            background-color: #93A3AB;
+            color: #FFFFFF;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .login a:hover {
+            background-color: #7d8d97;
+        }
+    </style>
+</head>
+<body>
+    <div class="login">
+        <a href="{% url 'admin:login' %}">Login Admin</a>
+    </div>
+    <div class="container">
+        <h1>Bienvenido a la tienda</h1>
+        <a href="{% url 'pedidos:crear_pedido' %}" class="button">Realizar Pedido</a>
+    </div>
+</body>
+</html>

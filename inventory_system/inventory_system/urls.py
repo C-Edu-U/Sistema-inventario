@@ -16,10 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from .views import index
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('reportes_generales/', include('reportes_generales.urls')),  # Incluye las rutas de la app reportes_generales
+    path('reportes_generales/', include('reportes_generales.urls')),
+    path('', index, name='index'),
+    path('pedidos/', include('pedidos.urls')),  # Incluye las rutas de la app reportes_generales
     # Otras rutas de tus aplicaciones
 ]
 
