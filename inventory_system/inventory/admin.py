@@ -1,9 +1,15 @@
 from django.contrib import admin
-from .models import Cliente, Compra, Producto, Venta, Proveedor, Categoria
+from .models import Categoria, Producto, Cliente, Venta, DetalleVenta
 
-admin.site.register(Venta)
-admin.site.register(Compra)
-admin.site.register(Producto)
-admin.site.register(Proveedor)
-admin.site.register(Cliente)
+class DetalleVentaInline(admin.TabularInline):
+    model = DetalleVenta
+    extra = 1
+
+class VentaAdmin(admin.ModelAdmin):
+    inlines = [DetalleVentaInline]
+
 admin.site.register(Categoria)
+admin.site.register(Producto)
+admin.site.register(Cliente)
+admin.site.register(Venta, VentaAdmin)
+admin.site.register(DetalleVenta)

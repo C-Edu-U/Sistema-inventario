@@ -1,17 +1,32 @@
 from django.shortcuts import render, redirect
-from django.views.generic import TemplateView
+from .forms import VentaForm, DetalleVentaFormSet
 from inventory.models import Venta
-from .forms import PedidoForm
-
 
 def crear_pedido(request):
     if request.method == 'POST':
-        form = PedidoForm(request.POST)
-        if form.is_valid():
-            pedido = form.save(commit=False)
-            pedido.vendedor = request.user  # Asigna el usuario conectado como vendedor
-            pedido.save()
-            return redirect('pedidos:pedido_exitoso')  # Redirige a una página de éxito
+        venta_form = VentaForm(request.POST)
+        detalle_formset = DetalleVentaFormSet(request.POST)
+        if venta_form.is_valid() and detalle_formset.is_valid():
+            venta = venta_form.save(commit=False)
+            venta.vendedor = request.user
+            venta.save()
+            detalles = detalle_formset.save(commit=False)
+            total = 0
+            for detalle in detalles:
+                detalle.venta = venta
+                detalle.precio = detalle.producto.precio_unitario
+                total += detalle.precio * detalle.cantidad
+                detalle.save()
+                detalle.producto.existencia -= detalle.cantidad
+                detalle.producto.save()
+            venta.total = total
+            venta.save()
+            return redirect('index')
     else:
-        form = PedidoForm()
-    return render(request, 'pedidos/pedido_form.html', {'form': form})
+        venta_form = VentaForm()
+        detalle_formset = DetalleVentaFormSet()
+    return render(request, 'pedidos/pedido_form.html', {
+        'venta_form': venta_form,
+        'detalle_formset': detalle_formset
+    })
+
