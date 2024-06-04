@@ -43,3 +43,4 @@ class DetalleVentaAdmin(admin.ModelAdmin):
         queryset = super().get_queryset(request)
         queryset = queryset.prefetch_related('venta', 'producto')
         return queryset
+    

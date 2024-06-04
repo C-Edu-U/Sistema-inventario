@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página de Inicio</title>
+    <title>Reportes Generales</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -33,34 +33,15 @@
         .button:hover {
             background-color: #004bbd;
         }
-        .login {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-        }
-        .login a {
-            background-color: #93A3AB;
-            color: #FFFFFF;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 4px;
-            cursor: pointer;
-            text-decoration: none;
-        }
-        .login a:hover {
-            background-color: #7d8d97;
-        }
     </style>
 </head>
 <body>
-    <div class="login">
-        <a href="{% url 'admin:login' %}">Login Admin</a>
-        <a href="{% url 'reportes_generales' %}" class="button">Reportes</a>
-    </div>
     <div class="container">
-        <h1>Bienvenido a la tienda</h1>
-        <a href="{% url 'pedidos:crear_pedido' %}" class="button">Realizar Pedido</a>
+        <h1>Reportes Generales</h1>
+        <a href="{% url 'reporte_usuarios' %}" class="button">Usuarios</a>
+        <a href="{% url 'reporte_clientes' %}" class="button">Clientes</a>
+        <a href="{% url 'reporte_ventas' %}" class="button">Ventas</a>
+        <a href="{% url 'reporte_productos' %}" class="button">Productos</a>
     </div>
 </body>
-
 </html>

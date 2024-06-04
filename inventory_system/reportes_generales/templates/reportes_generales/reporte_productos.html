@@ -1,35 +1,67 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Reporte de Productos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #F7F8FA;
+            color: #010101;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #FFFFFF;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #93A3AB;
+            text-align: left;
+        }
+        th {
+            background-color: #0561FC;
+            color: #FFFFFF;
+        }
+    </style>
 </head>
 <body>
-    <h1>Reporte de Productos</h1>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Descripción</th>
-                <th>Precio Compra</th>
-                <th>Precio Venta</th>
-                <th>Fecha de Caducidad</th>
-                <th>Existencia</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for producto in productos %}
-            <tr>
-                <td>{{ producto.id }}</td>
-                <td>{{ producto.nombre }}</td>
-                <td>{{ producto.descripcion }}</td>
-                <td>{{ producto.precio_compra }}</td>
-                <td>{{ producto.precio_venta }}</td>
-                <td>{{ producto.fecha_caducidad }}</td>
-                <td>{{ producto.existencia }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <div class="container">
+        <h1>Reporte de Productos</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Precio Unitario</th>
+                    <th>Existencia</th>
+                    <th>Categoría</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for producto in productos %}
+                    <tr>
+                        <td>{{ producto.id }}</td>
+                        <td>{{ producto.nombre }}</td>
+                        <td>{{ producto.descripcion }}</td>
+                        <td>{{ producto.precio_unitario }}</td>
+                        <td>{{ producto.existencia }}</td>
+                        <td>{{ producto.categoria }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>

@@ -1,33 +1,71 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Reporte de Ventas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #F7F8FA;
+            color: #010101;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #FFFFFF;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #93A3AB;
+            text-align: left;
+        }
+        th {
+            background-color: #0561FC;
+            color: #FFFFFF;
+        }
+        .total {
+            font-weight: bold;
+            font-size: 16px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Reporte de Ventas</h1>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Cliente</th>
-                <th>Producto</th>
-                <th>Fecha</th>
-                <th>Cantidad</th>
-                <th>Precio Total</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for venta in ventas %}
-            <tr>
-                <td>{{ venta.id }}</td>
-                <td>{{ venta.cliente }}</td>
-                <td>{{ venta.producto }}</td>
-                <td>{{ venta.fecha }}</td>
-                <td>{{ venta.cantidad }}</td>
-                <td>{{ venta.precio_total }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <div class="container">
+        <h1>Reporte de Ventas</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Cliente</th>
+                    <th>Vendedor</th>
+                    <th>Fecha</th>
+                    <th>Total de la Venta</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for venta in ventas %}
+                    <tr>
+                        <td>{{ venta.id }}</td>
+                        <td>{{ venta.cliente }}</td>
+                        <td>{{ venta.vendedor }}</td>
+                        <td>{{ venta.fecha }}</td>
+                        <td>{{ venta.total_detalle }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <p class="total">Total de Ventas: {{ total_ventas }}</p>
+    </div>
 </body>
 </html>
+
